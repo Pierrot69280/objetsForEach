@@ -66,5 +66,34 @@ etudiants.forEach((etudiant)=>{
 })
 
 
+// API :
+
+const h3 = document.querySelector('.chuck')
+const button = document.querySelector('.button')
+
+
+async function blagueChuck()  {
+   return await fetch("https://api.chucknorris.io/jokes/random")
+        .then(reponseEnJson=> reponseEnJson.json())
+        .then((reponsseDeserialisee) => {
+           // console.log(reponsseDeserialisee.value)
+           // h3.innerHTML = reponsseDeserialisee.value
+            return reponsseDeserialisee
+        })
+}
+
+
+button.addEventListener("click", () => {
+    blagueChuck().then(chuckElement => {
+        console.log(chuckElement.value)
+        h3.innerHTML = chuckElement.value
+    })
+})
+
+
+
+
+
+
 
 
