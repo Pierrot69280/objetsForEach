@@ -66,9 +66,10 @@ etudiants.forEach((etudiant)=>{
 })
 
 
-// API :
+// API Chuck :
 
 const h3 = document.querySelector('.chuck')
+
 const button = document.querySelector('.button')
 
 
@@ -89,6 +90,29 @@ button.addEventListener("click", () => {
         h3.innerHTML = chuckElement.value
     })
 })
+
+
+
+// API github :
+
+const bioGithub = document.querySelector('.bio')
+
+async function apiPierreGithub()  {
+    return await fetch("https://api.github.com/users/Pierrot69280")
+        .then(reponseEnJson=> reponseEnJson.json())
+        .then(reponsseDeserialisee => {
+
+            return reponsseDeserialisee
+        })
+}
+
+button.addEventListener("click", () => {
+    apiPierreGithub().then(apiElement => {
+        console.log(apiElement.bio)
+        bioGithub.innerHTML = apiElement.bio
+    })
+})
+
 
 
 
